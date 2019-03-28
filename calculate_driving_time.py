@@ -1,12 +1,12 @@
 import datetime
-import simplejson
+import json as simplejson
 import urllib.request
 
 from user_definition import *
 
 output_file = open(output_file_name, "a")
 # https://developers.google.com/maps/documentation/javascript/get-api-key
-apikey = 'AIzaSyCTWPyWsLgoMH6w_1iEf161paxhTiK1dNk'
+apikey = 'AIzaSyB0pP6zkiSy2GUkJHU-uDVCcPx062umU3Q'
 url = "https://maps.googleapis.com/maps/api/distancematrix/json?key={0}&origins={1}&destinations={2}&mode=driving&departure_time=now&language=en-EN&sensor=false".format(
     str(apikey), str(orig_coord), str(dest_coord))
 result = simplejson.load(urllib.request.urlopen(url))
@@ -18,4 +18,3 @@ output_file.write(result['destination_addresses'][0] + "\n")
 output_file.write(driving_time + "\n\n")
 
 output_file.close()
-
